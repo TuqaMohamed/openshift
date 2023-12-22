@@ -13,6 +13,5 @@ FROM nginxinc/nginx-unprivileged:alpine3.18-perl
 COPY --chown=nginx:nginx nginx.conf /etc/nginx/nginx.conf
 COPY --chown=nginx:nginx --from=build  /app/dist/clinic-appointment-app /var/www/html/
 
-ARG CORS
 ARG API_URL
 RUN sed -i "s|\$API_URL|${API_URL}|g" /var/www/html/main*.js
