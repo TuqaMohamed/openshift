@@ -20,6 +20,8 @@ RUN go build -o main .
 # Expose port 8080 to the outside world
 ARG PORT_ARG=8080
 ENV PORT=${PORT_ARG}
+ARG CORS 
+ENV CORS=${CORS}
 EXPOSE $PORT
 
 # Command to run the executable

@@ -23,7 +23,7 @@ func main() {
 	fmt.Println("Starting the application...")
 	port := ":"+os.Getenv("PORT")
 	dbURL:= os.Getenv("dbURL")
-	//corsOrigin := os.Getenv("CORS")
+	corsOrigin := os.Getenv("CORS")
 	config.ConnectDB(dbURL)
 	defer config.Client.Disconnect(config.Context)
 	o := mux.NewRouter()
@@ -41,6 +41,6 @@ func main() {
 
 	headers := handlers.AllowedHeaders([]string{"Content-Type", "Authorization"})
 	methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE"})
-	origins := handlers.AllowedOrigins([]string{"*"})
+	origins := handlers.AllowedOrigins([]string{corsOrigin})
 	log.Fatal(http.ListenAndServe(port, handlers.CORS(headers, methods, origins)(o)))
 }
