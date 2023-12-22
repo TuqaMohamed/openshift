@@ -8,7 +8,7 @@ import Config from "src/config.json";
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl=Config.API_URL;
+  private apiUrl=environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 

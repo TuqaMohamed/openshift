@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable ,tap} from 'rxjs';
 import Config from "src/config.json";
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class PatientService {
 
-  private apiUrl =Config.API_URL ; 
+  private apiUrl =environment.apiUrl; 
   constructor(private http: HttpClient) { }
   
   reserveSlot(slotId: string, patientId: string): Observable<any> {
