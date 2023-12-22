@@ -4,8 +4,5 @@ FROM mongo:latest
 # Set environment variables (optional)
 WORKDIR /phase1
 ENV  MONGO_INITDB_DATABASE=clinic
-ENV DB_PORT=27017
 
-EXPOSE $DB_PORT
-
-CMD ["mongod"]
+EXPOSE 27017
