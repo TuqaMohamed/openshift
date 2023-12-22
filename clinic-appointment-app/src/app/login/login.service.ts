@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders ,HttpErrorResponse} from '@angular/common/http';
 import { Observable ,tap} from 'rxjs';
 import { environment } from 'src/environments/environment';
-import Config from "src/config.json";
 
 @Injectable({
   providedIn: 'root'
