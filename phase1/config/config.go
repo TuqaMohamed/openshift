@@ -3,6 +3,7 @@ package config
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -12,7 +13,8 @@ var Client *mongo.Client
 var Context context.Context
 
 func ConnectDB(containerName string) {
-	clientOptions := options.Client().ApplyURI("mongodb://mongo-container:27017/")
+	dbURL:= os.Getenv("dbURL")
+	clientOptions := options.Client().ApplyURI(dbURL)
 	client, err := mongo.Connect(Context, clientOptions)
 	if err != nil {
 		fmt.Println(err)

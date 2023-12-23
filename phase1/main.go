@@ -22,7 +22,7 @@ func main() {
 
 	fmt.Println("Starting the application...")
 	port := ":"+os.Getenv("PORT")
-	dbURL:= os.Getenv("dbURL")
+	dbURL:= os.Getenv("mongo-container")
 	corsOrigin := os.Getenv("CORS")
 	config.ConnectDB(dbURL)
 	defer config.Client.Disconnect(config.Context)
