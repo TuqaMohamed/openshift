@@ -14,7 +14,7 @@ var Context context.Context
 
 func ConnectDB(containerName string) {
 	dbURL:= os.Getenv("dbURL")
-	clientOptions := options.Client().ApplyURI(dbURL)
+	clientOptions := options.Client().ApplyURI("mongodb:"+dbURL)
 	client, err := mongo.Connect(Context, clientOptions)
 	if err != nil {
 		fmt.Println(err)
