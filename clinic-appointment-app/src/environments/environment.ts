@@ -1,6 +1,6 @@
 import Config from "src/config.json";
 
 export const environment = {
-    production: true,
+    production: false,
     apiUrl:Config.API_URL,
 }
