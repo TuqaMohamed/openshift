@@ -14,7 +14,7 @@ var Context context.Context
 
 func ConnectDB(containerName string) {
 	dbURL:= os.Getenv("dbURL")
-	port := ":"+os.Getenv("PORT")
+	port := ":"+os.Getenv("DBPORT")
 	url := "mongodb://"+dbURL+port+"/"
 	fmt.Println(url)
 	clientOptions := options.Client().ApplyURI(url)

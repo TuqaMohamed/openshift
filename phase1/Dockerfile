@@ -24,6 +24,8 @@ ARG CORS
 ENV CORS=${CORS}
 ARG dbURL=mongodb://mongo-container:27017
 ENV dbURL=${dbURL}
+ARG DBPORT=27017
+ENV DBPORT=${DBPORT}
 EXPOSE $PORT
 
 # Command to run the executable
