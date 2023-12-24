@@ -1,14 +1,12 @@
-FROM node:20
+FROM node:20.10.0 as build
 
-WORKDIR /ToolsProject/clinic-appointment-app
+RUN mkdir -p /app
+WORKDIR /app
 
-COPY package*.json ./
-
-RUN npm install -g @angular/cli
-
+COPY package*.json /app/
 RUN npm install
 
-COPY . .
+COPY . /app/
 
 COPY replace-config-url.sh .
 
