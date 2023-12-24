@@ -22,9 +22,8 @@ func main() {
 
 	fmt.Println("Starting the application...")
 	port := ":"+os.Getenv("PORT")
-	dbURL:= os.Getenv("mongo-container")
 	corsOrigin := os.Getenv("CORS")
-	config.ConnectDB(dbURL)
+	config.ConnectDB("mongo-db")
 	defer config.Client.Disconnect(config.Context)
 	o := mux.NewRouter()
 
