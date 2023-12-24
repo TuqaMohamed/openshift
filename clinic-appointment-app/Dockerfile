@@ -1,28 +1,17 @@
+FROM node:20.10.0 as build
 
-FROM node:20
+RUN mkdir -p /app
+WORKDIR /app
 
-WORKDIR /ToolsProject/clinic-appointment-app
-
-COPY package*.json ./
-
-RUN npm install -g @angular/cli
-
+COPY package*.json /app/
 RUN npm install
 
-COPY . .
+COPY . /app/
+RUN npm run build --prod
 
-COPY replace-config-url.sh .
+FROM nginxinc/nginx-unprivileged:alpine3.18-perl
+COPY --chown=nginx:nginx nginx.conf /etc/nginx/nginx.conf
+COPY --chown=nginx:nginx --from=build  /app/dist/clinic-appointment-app /var/www/html/
 
-RUN chmod +x replace-config-url.sh
-
-RUN ng build --configuration=production
-
-
-ARG API_URL=http://localhost:8080
-ENV API_URL=${API_URL}
-ENV FPORT=4200
-
-EXPOSE $FPORT
-
-
-CMD ./replace-config-url.sh && ng serve --host 0.0.0.0 --configuration=production 
+ARG API_URL
+RUN sed -i "s|\$API_URL|${API_URL}|g" /var/www/html/main*.js
