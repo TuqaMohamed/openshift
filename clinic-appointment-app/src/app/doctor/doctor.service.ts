@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable ,tap} from 'rxjs';
 import { environment } from 'src/environments/environment';
-
+import Config from 'src/config.json'
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorService {
-  private apiUrl=environment.apiUrl;
+  private apiUrl=Config.API_URL;
 
   constructor(private http: HttpClient) { }
 
