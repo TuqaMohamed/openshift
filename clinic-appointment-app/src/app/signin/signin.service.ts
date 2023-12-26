@@ -13,7 +13,7 @@ export class SigninService {
     const user = { Name, Email, Password, UserType };
     console.log('Request payload:', user);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    console.log('Constructed URL:', `${this.apiUrl}/signup`);
+    // console.log('Constructed URL:', `${this.apiUrl}/signup`);
     return this.http.post(`${this.apiUrl}/signup`, user);
   }
 }
